@@ -12,15 +12,15 @@ public class Main {
 
         // Mostrar um menu inicial
         System.out.println("Bem-vindo ao sistema de controle de multas de trânsito!");
-        System.out.println("Escolha uma opção:");
-        System.out.println("1. Registrar ocorrência");
-        System.out.println("2. Visualizar multas pendentes");
-        System.out.println("3. Filtrar multas por data");
-        System.out.println("4. Sair");
         
         // Loop de interação com o usuário
         while (true) {
-            System.out.print("Escolha uma opção (1/2/3/4): ");
+            System.out.println("");
+            System.out.println("1. Registrar ocorrência");
+            System.out.println("2. Visualizar multas pendentes");
+            System.out.println("3. Filtrar multas por data");
+            System.out.println("4. Sair");
+            System.out.print("Escolha uma opção: ");
             int opcao = scanner.nextInt();
             scanner.nextLine(); // Limpar o buffer do scanner
 
