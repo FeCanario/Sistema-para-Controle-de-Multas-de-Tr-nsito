@@ -19,10 +19,20 @@ public class BaseDeDados {
     // Inicializa as regras de multas
     public void inicializaRegras() {
         regras.add(new RegraVelocidade(60, "Avenida Washington Luiz"));
-        regras.add(new RegraVelocidade(70, "Avenida Nações Unidas"));
+        regras.add(new RegraVelocidade(90, "Avenida Nações Unidas"));
+        regras.add(new RegraVelocidade(50, "Avenida Morumbi"));
+        regras.add(new RegraVelocidade(50, "Avenida João Dias"));
+        regras.add(new RegraVelocidade(60, "Avenida Brasil"));
+        regras.add(new RegraVelocidade(110, "Rodovia dos Bandeirantes"));
+
+        regras.add(new RegraRodizio(3, "Marginal do Rio Tietê", "Avenida dos Bandeirantes", 5));
+        regras.add(new RegraRodizio(2, "Professor Luís Ignácio de Anhaia Melo", "Avenida Salim Farah Maluf", 3));
         regras.add(new RegraRodizio(1, "Avenida Bandeirantes", "Avenida 23 de Maio", 1));
-        regras.add(new RegraCorredorOnibus(6, 23, "Avenida Santo Amaro"));
-        regras.add(new RegraCorredorOnibus(0, 24, "Avenida Vereador José Diniz"));
+
+        regras.add(new RegraCorredorOnibus(6, 18, "Avenida Santo Amaro"));
+        regras.add(new RegraCorredorOnibus(6, 20, "Avenida Vereador José Diniz"));
+        regras.add(new RegraCorredorOnibus(8, 16, "Avenida Rebouças"));
+        regras.add(new RegraCorredorOnibus(8, 20, "Avenida Jornalista Roberto Marinho"));
     }
 
     // Adiciona uma ocorrência na lista de não processadas
