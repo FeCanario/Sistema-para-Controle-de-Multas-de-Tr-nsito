@@ -1,4 +1,5 @@
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Scanner;
 
 public class Main {
@@ -19,7 +20,8 @@ public class Main {
             System.out.println("1. Registrar ocorrência");
             System.out.println("2. Visualizar multas pendentes");
             System.out.println("3. Filtrar multas por data");
-            System.out.println("4. Sair");
+            System.out.println("4. Processar ocorrências");
+            System.out.println("5. Sair");
             System.out.print("Escolha uma opção: ");
             int opcao = scanner.nextInt();
             scanner.nextLine(); // Limpar o buffer do scanner
@@ -32,16 +34,33 @@ public class Main {
                 System.out.print("Digite o logradouro da ocorrência: ");
                 String logradouro = scanner.nextLine();
 
+                System.out.print("Digite a data da ocorrência (AAAA-MM-DD): ");
+                String dataStr = scanner.nextLine();
+                LocalDate data = LocalDate.parse(dataStr);
+
+                System.out.print("Digite a hora da ocorrência (HH:MM): ");
+                String horaStr = scanner.nextLine();
+                LocalTime hora = LocalTime.parse(horaStr);
+
                 System.out.print("Digite o tipo de multa (ex: Velocidade, Rodizio, CorredorOnibus): ");
                 String tipo = scanner.nextLine();
 
-                System.out.print("Digite o valor relacionado à ocorrência (ex: velocidade, dia da semana, etc.): ");
-                String dados = scanner.nextLine();
+                int velocidade = 0;
+                if (tipo.equalsIgnoreCase("Velocidade")) {
+                    System.out.print("Digite a velocidade registrada (km/h): ");
+                    velocidade = scanner.nextInt();
+                    scanner.nextLine(); // Limpar o buffer
+                }
 
                 // Criar a ocorrência e adicionar à base de dados
-                Ocorrencia ocorrencia = new Ocorrencia(placa, logradouro, dados, tipo);
-                baseDeDados.adicionarOcorrencia(ocorrencia);
+                Ocorrencia ocorrencia;
+                if (tipo.equalsIgnoreCase("Velocidade")) {
+                    ocorrencia = new Ocorrencia(placa, logradouro, data, hora, velocidade, tipo);
+                } else {
+                    ocorrencia = new Ocorrencia(placa, logradouro, data, hora, tipo);
+                }
 
+                baseDeDados.adicionarOcorrencia(ocorrencia);
                 System.out.println("Ocorrência registrada com sucesso!");
 
             } else if (opcao == 2) {
@@ -63,6 +82,11 @@ public class Main {
                 }
 
             } else if (opcao == 4) {
+                // Processar ocorrências
+                baseDeDados.processarOcorrencias();
+                System.out.println("Ocorrências processadas e multas geradas!");
+
+            } else if (opcao == 5) {
                 // Sair
                 System.out.println("Saindo do sistema...");
                 break;  // Encerra o loop

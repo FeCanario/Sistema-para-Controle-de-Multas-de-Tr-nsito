@@ -7,19 +7,19 @@ public class RegraVelocidade extends RegraMulta {
         this.logradouro = logradouro;
     }
 
-    
+    @Override
     public int verificarNivelMulta(Ocorrencia ocorrencia) {
-        if (ocorrencia.getlogradouro().equals(logradouro) && 
-            ocorrencia.gettipo().equals("Velocidade")) {
-            int velocidadeRegistrada = Integer.parseInt(ocorrencia.getdatahora()); // Exemplo de dado fictício
+        if (ocorrencia.getLogradouro().equals(logradouro) && 
+            ocorrencia.getTipo().equals("Velocidade")) {
+            int velocidadeRegistrada = ocorrencia.getVelocidade();
             if (velocidadeRegistrada > limiteVelocidade + 20) return 3; // Grave
-            else if (velocidadeRegistrada > limiteVelocidade + 10) return 2; // Média 
+            else if (velocidadeRegistrada > limiteVelocidade + 10) return 2; // Média
             else if (velocidadeRegistrada > limiteVelocidade) return 1; // Leve
         }
-        return 0; 
+        return 0;
     }
 
-    
+    @Override
     public String obterDescricaoMulta() {
         return "Excesso de velocidade no logradouro " + logradouro;
     }

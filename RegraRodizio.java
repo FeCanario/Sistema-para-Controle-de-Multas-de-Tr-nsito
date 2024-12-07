@@ -1,5 +1,5 @@
 public class RegraRodizio extends RegraMulta {
-    private int diaSemana; 
+    private int diaSemana;
     private String logradouro1;
     private String logradouro2;
     private int placaFinalPermitida;
@@ -11,19 +11,20 @@ public class RegraRodizio extends RegraMulta {
         this.placaFinalPermitida = placaFinalPermitida;
     }
 
+    @Override
     public int verificarNivelMulta(Ocorrencia ocorrencia) {
-        if ((ocorrencia.getlogradouro().equals(logradouro1) || ocorrencia.getlogradouro().equals(logradouro2)) &&
-            ocorrencia.gettipo().equalsIgnoreCase("Rodizio")) {
-            String data = ocorrencia.getdatahora(); 
-            int diaRegistrado = Integer.parseInt(data.split("-")[2]); 
-            int placaFinal = Integer.parseInt(ocorrencia.getplaca().substring(ocorrencia.getplaca().length() - 1));
+        if ((ocorrencia.getLogradouro().equals(logradouro1) || ocorrencia.getLogradouro().equals(logradouro2)) &&
+            ocorrencia.getTipo().equalsIgnoreCase("Rodizio")) {
+            int diaRegistrado = ocorrencia.getData().getDayOfWeek().getValue(); //converter número do dia para data (1=Segunda-Feira)
+            int placaFinal = Integer.parseInt(ocorrencia.getPlaca().substring(ocorrencia.getPlaca().length() - 1));
             if (diaRegistrado == diaSemana && placaFinal != placaFinalPermitida) {
-                return 2; 
+                return 2;
             }
         }
-        return 0; 
+        return 0;
     }
 
+    @Override
     public String obterDescricaoMulta() {
         return "Violação de rodízio em " + logradouro1 + " ou " + logradouro2;
     }

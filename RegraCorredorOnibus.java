@@ -9,10 +9,11 @@ public class RegraCorredorOnibus extends RegraMulta {
         this.logradouro = logradouro;
     }
 
+    @Override
     public int verificarNivelMulta(Ocorrencia ocorrencia) {
-        if (ocorrencia.getlogradouro().equals(logradouro) &&
-            ocorrencia.gettipo().equalsIgnoreCase("CorredorOnibus")) {
-            int horaRegistrada = Integer.parseInt(ocorrencia.getdatahora().split(":")[0]); // Exemplo fictício
+        if (ocorrencia.getLogradouro().equals(logradouro) &&
+            ocorrencia.getTipo().equalsIgnoreCase("CorredorOnibus")) {
+            int horaRegistrada = ocorrencia.getHora().getHour();
             if (horaRegistrada >= horaInicio && horaRegistrada <= horaFim) {
                 return 3; // Multa grave
             }
@@ -20,6 +21,7 @@ public class RegraCorredorOnibus extends RegraMulta {
         return 0; // Sem multa
     }
 
+    @Override
     public String obterDescricaoMulta() {
         return "Tráfego ilegal no corredor de ônibus na " + logradouro;
     }
