@@ -18,21 +18,37 @@ public class BaseDeDados {
 
     // Inicializa as regras de multas
     public void inicializaRegras() {
-        regras.add(new RegraVelocidade(60, "Avenida Washington Luiz"));
-        regras.add(new RegraVelocidade(90, "Avenida Nações Unidas"));
+
+        regras.add(new RegraVelocidade(30, "Rua Augusta"));
+        regras.add(new RegraVelocidade(40, "Rua da Consolacao"));
         regras.add(new RegraVelocidade(50, "Avenida Morumbi"));
-        regras.add(new RegraVelocidade(50, "Avenida João Dias"));
+        regras.add(new RegraVelocidade(50, "Avenida Joao Dias"));
+        regras.add(new RegraVelocidade(50, "Avenida Paulista"));
+        regras.add(new RegraVelocidade(60, "Avenida Washington Luiz"));
+        regras.add(new RegraVelocidade(60, "Avenida Faria Lima"));
         regras.add(new RegraVelocidade(60, "Avenida Brasil"));
+        regras.add(new RegraVelocidade(80, "Rodovia Castelo Branco"));
+        regras.add(new RegraVelocidade(90, "Avenida Nacoes Unidas"));  
         regras.add(new RegraVelocidade(110, "Rodovia dos Bandeirantes"));
-
-        regras.add(new RegraRodizio(3, "Marginal do Rio Tietê", "Avenida dos Bandeirantes", 5));
-        regras.add(new RegraRodizio(2, "Professor Luís Ignácio de Anhaia Melo", "Avenida Salim Farah Maluf", 3));
+        
         regras.add(new RegraRodizio(1, "Avenida Bandeirantes", "Avenida 23 de Maio", 1));
+        regras.add(new RegraRodizio(1, "Avenida Faria Lima", "Rua da Consolação", 2));
+        regras.add(new RegraRodizio(2, "Professor Luis Ignacio de Anhaia Melo", "Avenida Salim Farah Maluf", 3));
+        regras.add(new RegraRodizio(2, "Avenida Paulista", "Rua Augusta", 4));
+        regras.add(new RegraRodizio(3, "Marginal do Rio Tiete", "Avenida dos Bandeirantes", 5));
+        regras.add(new RegraRodizio(3, "Avenida dos Estados", "Rua da Consolacao", 6));
+        regras.add(new RegraRodizio(4, "Avenida do Estado", "Rua Tamandare", 1));
+        regras.add(new RegraRodizio(5, "Avenida Nacoes Unidas", "Rua Heitor Penteado", 2));
 
+        regras.add(new RegraCorredorOnibus(5, 17, "Avenida Brigadeiro Faria Lima"));
         regras.add(new RegraCorredorOnibus(6, 18, "Avenida Santo Amaro"));
-        regras.add(new RegraCorredorOnibus(6, 20, "Avenida Vereador José Diniz"));
-        regras.add(new RegraCorredorOnibus(8, 16, "Avenida Rebouças"));
+        regras.add(new RegraCorredorOnibus(6, 20, "Avenida Vereador Jose Diniz"));
+        regras.add(new RegraCorredorOnibus(7, 19, "Avenida Ibirapuera"));
+        regras.add(new RegraCorredorOnibus(8, 16, "Avenida Reboucas"));
         regras.add(new RegraCorredorOnibus(8, 20, "Avenida Jornalista Roberto Marinho"));
+        regras.add(new RegraCorredorOnibus(9, 17, "Avenida dos Bandeirantes"));
+        regras.add(new RegraCorredorOnibus(10, 18, "Avenida Washington Luis"));
+        regras.add(new RegraCorredorOnibus(11, 20, "Avenida Salim Farah Maluf"));
     }
 
     // Adiciona uma ocorrência na lista de não processadas

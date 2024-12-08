@@ -31,7 +31,7 @@ public class Main {
                 System.out.print("Digite a placa do veículo: ");
                 String placa = scanner.nextLine();
 
-                System.out.print("Digite o logradouro da ocorrência: ");
+                System.out.print("Digite o logradouro da ocorrência: (sem caracteres especiais como 'ç' e 'ã')");
                 String logradouro = scanner.nextLine();
 
                 System.out.print("Digite a data da ocorrência (AAAA-MM-DD): ");
