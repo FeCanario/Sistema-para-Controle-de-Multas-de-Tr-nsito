@@ -1,6 +1,6 @@
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.time.LocalDate;
 import java.util.stream.Collectors;
 
 public class BaseDeDados {
@@ -31,22 +31,22 @@ public class BaseDeDados {
         regras.add(new RegraVelocidade(90, "Avenida Nacoes Unidas"));  
         regras.add(new RegraVelocidade(110, "Rodovia dos Bandeirantes"));
         
-        regras.add(new RegraRodizio(1, "Avenida Bandeirantes", "Avenida 23 de Maio", 1));
-        regras.add(new RegraRodizio(1, "Avenida Faria Lima", "Rua da Consolação", 2));
-        regras.add(new RegraRodizio(2, "Professor Luis Ignacio de Anhaia Melo", "Avenida Salim Farah Maluf", 3));
-        regras.add(new RegraRodizio(2, "Avenida Paulista", "Rua Augusta", 4));
-        regras.add(new RegraRodizio(3, "Marginal do Rio Tiete", "Avenida dos Bandeirantes", 5));
-        regras.add(new RegraRodizio(3, "Avenida dos Estados", "Rua da Consolacao", 6));
-        regras.add(new RegraRodizio(4, "Avenida do Estado", "Rua Tamandare", 1));
-        regras.add(new RegraRodizio(5, "Avenida Nacoes Unidas", "Rua Heitor Penteado", 2));
+        regras.add(new RegraRodizio(01, "Avenida Bandeirantes", "Avenida 23 de Maio", 01));
+        regras.add(new RegraRodizio(01, "Avenida Faria Lima", "Rua da Consolação", 02));
+        regras.add(new RegraRodizio(02, "Professor Luis Ignacio de Anhaia Melo", "Avenida Salim Farah Maluf", 03));
+        regras.add(new RegraRodizio(02, "Avenida Paulista", "Rua Augusta", 04));
+        regras.add(new RegraRodizio(03, "Marginal do Rio Tiete", "Avenida dos Bandeirantes", 05));
+        regras.add(new RegraRodizio(03, "Avenida dos Estados", "Rua da Consolacao", 06));
+        regras.add(new RegraRodizio(04, "Avenida do Estado", "Rua Tamandare", 01));
+        regras.add(new RegraRodizio(05, "Avenida Nacoes Unidas", "Rua Heitor Penteado", 02));
 
-        regras.add(new RegraCorredorOnibus(5, 17, "Avenida Brigadeiro Faria Lima"));
-        regras.add(new RegraCorredorOnibus(6, 18, "Avenida Santo Amaro"));
-        regras.add(new RegraCorredorOnibus(6, 20, "Avenida Vereador Jose Diniz"));
-        regras.add(new RegraCorredorOnibus(7, 19, "Avenida Ibirapuera"));
-        regras.add(new RegraCorredorOnibus(8, 16, "Avenida Reboucas"));
-        regras.add(new RegraCorredorOnibus(8, 20, "Avenida Jornalista Roberto Marinho"));
-        regras.add(new RegraCorredorOnibus(9, 17, "Avenida dos Bandeirantes"));
+        regras.add(new RegraCorredorOnibus(05, 17, "Avenida Brigadeiro Faria Lima"));
+        regras.add(new RegraCorredorOnibus(06, 18, "Avenida Santo Amaro"));
+        regras.add(new RegraCorredorOnibus(06, 20, "Avenida Vereador Jose Diniz"));
+        regras.add(new RegraCorredorOnibus(07, 19, "Avenida Ibirapuera"));
+        regras.add(new RegraCorredorOnibus(07, 19, "Avenida Reboucas"));
+        regras.add(new RegraCorredorOnibus(07, 20, "Avenida Jornalista Roberto Marinho"));
+        regras.add(new RegraCorredorOnibus(03, 17, "Avenida dos Bandeirantes"));
         regras.add(new RegraCorredorOnibus(10, 18, "Avenida Washington Luis"));
         regras.add(new RegraCorredorOnibus(11, 20, "Avenida Salim Farah Maluf"));
     }
