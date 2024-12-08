@@ -23,6 +23,13 @@ Este é um sistema desenvolvido em **Java** para o **controle e gerenciamento de
    [git clone https://github.com/seu-usuario/sistema-controle-multas.git](https://github.com/FeCanario/Sistema-para-Controle-de-Multas-de-Tr-nsito.git)
 ---
 
-### Feito por ☯️  
-Felipe Almeida de Carvalho e Fernando dos Santos Canario
+## 📌 Créditos  
 
+Desenvolvido com dedicação por:  
+
+- **Felipe Almeida de Carvalho**  ☯️
+- **Fernando dos Santos Canario**  ☯️
+
+
+
+---
