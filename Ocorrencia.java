@@ -48,7 +48,6 @@ public class Ocorrencia {
         this.data = data;
         this.tipo = tipo;
         this.tipoVeiculo = tipoVeiculo;
-
     }
 
     // Getters e Setters
