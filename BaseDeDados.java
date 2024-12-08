@@ -7,7 +7,7 @@ public class BaseDeDados {
     private List<Ocorrencia> ocorrenciasNaoProcessadas;
     private List<Ocorrencia> ocorrenciasProcessadas;
     private List<Multa> multas;
-    private List<RegraMulta> regras;
+    List<RegraMulta> regras;
 
     public BaseDeDados() {
         ocorrenciasNaoProcessadas = new ArrayList<>();
@@ -60,45 +60,61 @@ public class BaseDeDados {
     public void processarOcorrencias() {
         for (Ocorrencia ocorrencia : ocorrenciasNaoProcessadas) {
             for (RegraMulta regra : regras) {
-                Multa multa = regra.calcularmulta(ocorrencia);
-                if (multa != null) {
-                    // Adiciona a data da multa ao registrá-la E passa o tipo de veículo
-                    multa = new Multa(
-                        multa.getPlaca(), 
-                        multa.getDescricao(), 
-                        multa.getNivel(), 
-                        multa.getValor(), 
-                        multa.getDataMulta(), 
-                        ocorrencia.getTipoVeiculo()  // Passa o tipo de veículo da ocorrência
+                // Calcula a multa com base na regra e ocorrência
+                int nivel = regra.verificarNivelMulta(ocorrencia);
+                
+                if (nivel > 0) {
+                    // Obtem a descrição da multa
+                    String descricao = regra.obterDescricaoMulta();
+                    
+                    // Define o valor da multa com base no nível
+                    double valor = 0.0;
+                    if (nivel == 3) {
+                        valor = 500.0;  // Multa grave
+                    } else if (nivel == 2) {
+                        valor = 300.0;  // Multa média
+                    } else if (nivel == 1) {
+                        valor = 150.0;  // Multa leve
+                    }
+    
+                    // Cria uma multa com base na ocorrência e a descrição, incluindo o tipo de veículo
+                    Multa multa = new Multa(
+                        ocorrencia.getPlaca(), 
+                        descricao, 
+                        nivel, 
+                        valor, 
+                        ocorrencia.getData(), 
+                        ocorrencia.getTipoVeiculo()
                     );
-                    multas.add(multa);
+                    multas.add(multa);  // Adiciona a multa à lista
                 }
             }
-            ocorrenciasProcessadas.add(ocorrencia);
+            ocorrenciasProcessadas.add(ocorrencia);  // Marca a ocorrência como processada
         }
-        ocorrenciasNaoProcessadas.clear(); // Limpa as ocorrências não processadas
+        ocorrenciasNaoProcessadas.clear();  // Limpa as ocorrências não processadas
     }
 
     // Retorna as multas pendentes (não processadas)
     public List<Multa> getMultasPendentes() {
         return multas.stream()
-                     .filter(multa -> !multa.isProcessada())
+                     .filter(multa -> !multa.isProcessada())  // Filtra as multas não processadas
                      .collect(Collectors.toList());
     }
 
     // Retorna as multas filtradas por data
     public List<Multa> buscarMultasPorData(LocalDate data) {
         return multas.stream()
-                     .filter(multa -> multa.getDataMulta().equals(data))
+                     .filter(multa -> multa.getDataMulta().equals(data))  // Filtra as multas pela data
                      .collect(Collectors.toList());
     }
 
     // Marcar a multa como processada
     public void processarMulta(Multa multa) {
-        multa.setProcessada(true);
+        multa.setProcessada(true);  // Marca a multa como processada
     }
 
+    // Retorna todas as multas registradas
     public List<Multa> getMultas() {
-        return multas;
+        return multas;  // Retorna a lista completa de multas
     }
 }

@@ -17,6 +17,7 @@ public class Multa {
         this.valor = valor;
         this.dataMulta = dataMulta;  // Define a data da multa
         this.processada = false;  // Inicialmente, a multa é pendente
+        this.tipoVeiculo = 1; // Valor padrão se não especificado
     }
 
     // Novo construtor que também recebe o tipo de veículo
@@ -46,11 +47,6 @@ public class Multa {
         return tipoVeiculo;
     }
 
-    // Novo método para obter a descrição do tipo de veículo
-    public String getDescricaoTipoVeiculo() {
-        return converterTipoVeiculo(this.tipoVeiculo);
-    }
-
     // Método estático para converter tipo de veículo
     public static String converterTipoVeiculo(int tipoVeiculo) {
         switch (tipoVeiculo) {
@@ -58,9 +54,16 @@ public class Multa {
                 return "Veículo Leve";
             case 2:
                 return "Veículo Pesado";
+            case 3:
+                return "Moto";
             default:
                 return "Tipo de Veículo Desconhecido";
         }
+    }
+
+    // Método de instância para obter a descrição do tipo de veículo
+    public String getDescricaoTipoVeiculo() {
+        return converterTipoVeiculo(this.tipoVeiculo);
     }
 
     public LocalDate getDataMulta() {
