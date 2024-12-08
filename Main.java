@@ -73,7 +73,7 @@ public class Main {
 
         // Mostrar um menu inicial
         System.out.println("Bem-vindo ao sistema de controle de multas de trânsito!");
-
+        
         // Loop de interação com o usuário
         while (true) {
             System.out.println("");
@@ -99,7 +99,7 @@ public class Main {
                     }
                 }
 
-                System.out.print("Digite o logradouro da ocorrência (sem caracteres especiais como 'ç' e 'ã'): ");
+                System.out.print("Digite o logradouro da ocorrência(sem caracteres especiais como 'ç' e 'ã'): ");
                 String logradouro = scanner.nextLine();
 
                 //Validar data da ocorrência
@@ -154,7 +154,7 @@ public class Main {
                 // Criar a ocorrência e adicionar à base de dados
                 Ocorrencia ocorrencia;
                 if (tipo.equalsIgnoreCase("Velocidade")) {
-                    ocorrencia = new Ocorrencia(placa, logradouro, data, hora, tipo, tipoVeiculo);
+                    ocorrencia = new Ocorrencia(placa, logradouro, data, hora, velocidade, tipo, tipoVeiculo);
                 } else {
                     ocorrencia = new Ocorrencia(placa, logradouro, data, hora, tipo, tipoVeiculo);
                 }
