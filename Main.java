@@ -45,7 +45,7 @@ public class Main {
                 System.out.print("Digite o tipo de multa (ex: Velocidade, Rodizio, CorredorOnibus): ");
                 String tipo = scanner.nextLine();
 
-                System.out.print("Digite o tipo de veículo (1 - Veículo leve; 2 - Caminhão; 3 - Moto): ");
+                System.out.print("Digite o tipo de veículo (1 - Veículo leve; 2 - Caminhão): ");
                 int tipoVeiculo = scanner.nextInt();
 
                 int velocidade = 0;

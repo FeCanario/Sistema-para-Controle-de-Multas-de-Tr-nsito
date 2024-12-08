@@ -62,8 +62,15 @@ public class BaseDeDados {
             for (RegraMulta regra : regras) {
                 Multa multa = regra.calcularmulta(ocorrencia);
                 if (multa != null) {
-                    // Adiciona a data da multa ao registrá-la
-                    multa = new Multa(multa.getPlaca(), multa.getDescricao(), multa.getNivel(), multa.getValor(), LocalDate.now());
+                    // Adiciona a data da multa ao registrá-la E passa o tipo de veículo
+                    multa = new Multa(
+                        multa.getPlaca(), 
+                        multa.getDescricao(), 
+                        multa.getNivel(), 
+                        multa.getValor(), 
+                        multa.getDataMulta(), 
+                        ocorrencia.getTipoVeiculo()  // Passa o tipo de veículo da ocorrência
+                    );
                     multas.add(multa);
                 }
             }

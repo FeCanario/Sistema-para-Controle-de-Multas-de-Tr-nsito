@@ -5,6 +5,7 @@ public class Multa {
     private String descricao;
     private int nivel; // 0 = Sem Multa, 1 = Leve, 2 = Média, 3 = Grave
     private double valor;
+    private int tipoVeiculo;
     private LocalDate dataMulta; // Data da multa
     private boolean processada;  // Status de pendente (false = pendente, true = processada)
 
@@ -16,6 +17,12 @@ public class Multa {
         this.valor = valor;
         this.dataMulta = dataMulta;  // Define a data da multa
         this.processada = false;  // Inicialmente, a multa é pendente
+    }
+
+    // Novo construtor que também recebe o tipo de veículo
+    public Multa(String placa, String descricao, int nivel, double valor, LocalDate dataMulta, int tipoVeiculo) {
+        this(placa, descricao, nivel, valor, dataMulta);
+        this.tipoVeiculo = tipoVeiculo;
     }
 
     // Getters
@@ -35,6 +42,27 @@ public class Multa {
         return valor;
     }
 
+    public int getTipoVeiculo() {
+        return tipoVeiculo;
+    }
+
+    // Novo método para obter a descrição do tipo de veículo
+    public String getDescricaoTipoVeiculo() {
+        return converterTipoVeiculo(this.tipoVeiculo);
+    }
+
+    // Método estático para converter tipo de veículo
+    public static String converterTipoVeiculo(int tipoVeiculo) {
+        switch (tipoVeiculo) {
+            case 1:
+                return "Veículo Leve";
+            case 2:
+                return "Veículo Pesado";
+            default:
+                return "Tipo de Veículo Desconhecido";
+        }
+    }
+
     public LocalDate getDataMulta() {
         return dataMulta;  // Retorna a data da multa
     }
@@ -50,7 +78,7 @@ public class Multa {
     // Método toString para exibir as multas
     @Override
     public String toString() {
-        return "Placa: " + placa + ", Descrição: " + descricao + 
+        return "Placa: " + placa + ", Tipo do Veículo: " + getDescricaoTipoVeiculo() + ", Descrição: " + descricao + 
                ", Nível: " + nivel + ", Valor: R$" + valor + 
                ", Data: " + dataMulta + ", Processada: " + processada;
     }
