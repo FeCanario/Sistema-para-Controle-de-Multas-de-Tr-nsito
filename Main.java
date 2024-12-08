@@ -8,8 +8,8 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static void lerOcorrenciasDeArquivo(BaseDeDados baseDeDados, String filePath) {
-    try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+    public static void lerOcorrenciasDeArquivo(BaseDeDados baseDeDados, String dirArq) {
+    try (BufferedReader br = new BufferedReader(new FileReader(dirArq))) {
         String linha;
         while ((linha = br.readLine()) != null) {
             String[] campos = linha.split(",");

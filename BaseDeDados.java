@@ -34,7 +34,6 @@ public class BaseDeDados {
         regras.add(new RegraRodizio(01, "Avenida Bandeirantes", "Avenida 23 de Maio", 01));
         regras.add(new RegraRodizio(01, "Avenida Faria Lima", "Rua da Consolação", 02));
         regras.add(new RegraRodizio(02, "Professor Luis Ignacio de Anhaia Melo", "Avenida Salim Farah Maluf", 03));
-        regras.add(new RegraRodizio(02, "Avenida Paulista", "Rua Augusta", 04));
         regras.add(new RegraRodizio(03, "Marginal do Rio Tiete", "Avenida dos Bandeirantes", 05));
         regras.add(new RegraRodizio(03, "Avenida dos Estados", "Rua da Consolacao", 06));
         regras.add(new RegraRodizio(04, "Avenida do Estado", "Rua Tamandare", 01));
