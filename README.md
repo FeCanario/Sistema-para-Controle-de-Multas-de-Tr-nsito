@@ -14,7 +14,6 @@ Este é um sistema desenvolvido em **Java** para o **controle e gerenciamento de
 ## Tecnologias Utilizadas ⚙️
 
 - **Java**: Linguagem de programação principal utilizada para o desenvolvimento do sistema.
-- **LocalDate** (Java 8): Usado para representar e filtrar as datas das multas.
 
 ## Como Executar o Projeto 🚀
 
