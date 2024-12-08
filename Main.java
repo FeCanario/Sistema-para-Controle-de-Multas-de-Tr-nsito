@@ -31,7 +31,7 @@ public class Main {
                 System.out.print("Digite a placa do veículo: ");
                 String placa = scanner.nextLine();
 
-                System.out.print("Digite o logradouro da ocorrência: (sem caracteres especiais como 'ç' e 'ã')");
+                System.out.print("Digite o logradouro da ocorrência(sem caracteres especiais como 'ç' e 'ã'): ");
                 String logradouro = scanner.nextLine();
 
                 System.out.print("Digite a data da ocorrência (AAAA-MM-DD): ");
@@ -45,6 +45,9 @@ public class Main {
                 System.out.print("Digite o tipo de multa (ex: Velocidade, Rodizio, CorredorOnibus): ");
                 String tipo = scanner.nextLine();
 
+                System.out.print("Digite o tipo de veículo (1 - Veículo leve; 2 - Caminhão; 3 - Moto): ");
+                int tipoVeiculo = scanner.nextInt();
+
                 int velocidade = 0;
                 if (tipo.equalsIgnoreCase("Velocidade")) {
                     System.out.print("Digite a velocidade registrada (km/h): ");
@@ -55,9 +58,9 @@ public class Main {
                 // Criar a ocorrência e adicionar à base de dados
                 Ocorrencia ocorrencia;
                 if (tipo.equalsIgnoreCase("Velocidade")) {
-                    ocorrencia = new Ocorrencia(placa, logradouro, data, hora, velocidade, tipo);
+                    ocorrencia = new Ocorrencia(placa, logradouro, data, hora, velocidade, tipo, tipoVeiculo);
                 } else {
-                    ocorrencia = new Ocorrencia(placa, logradouro, data, hora, tipo);
+                    ocorrencia = new Ocorrencia(placa, logradouro, data, hora, tipo, tipoVeiculo);
                 }
 
                 baseDeDados.adicionarOcorrencia(ocorrencia);
