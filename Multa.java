@@ -61,6 +61,19 @@ public class Multa {
         }
     }
 
+    public static String converterNivelMulta(int nivel) {
+        switch (nivel) {
+            case 1:
+                return "multa leve";
+            case 2:
+                return "multa média";
+            case 3:
+                return "multa grave";
+            default:
+                return "sem multa";
+        }
+    }
+
     // Método de instância para obter a descrição do tipo de veículo
     public String getDescricaoTipoVeiculo() {
         return converterTipoVeiculo(this.tipoVeiculo);
@@ -82,7 +95,7 @@ public class Multa {
     @Override
     public String toString() {
         return "Placa: " + placa + ", Tipo do Veículo: " + getDescricaoTipoVeiculo() + ", Descrição: " + descricao + 
-               ", Nível: " + nivel + ", Valor: R$" + valor + 
+               ", Nível: " + converterNivelMulta(nivel) + ", Valor: R$" + valor + 
                ", Data: " + dataMulta + ", Processada: " + processada;
     }
 }
