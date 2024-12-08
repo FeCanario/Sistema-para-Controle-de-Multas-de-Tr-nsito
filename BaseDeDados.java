@@ -1,5 +1,6 @@
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -31,15 +32,12 @@ public class BaseDeDados {
         regras.add(new RegraVelocidade(90, "Avenida Nacoes Unidas"));  
         regras.add(new RegraVelocidade(110, "Rodovia dos Bandeirantes"));
         
-        regras.add(new RegraRodizio(01, "Avenida Bandeirantes", "Avenida 23 de Maio", 01));
-        regras.add(new RegraRodizio(01, "Avenida Faria Lima", "Rua da Consolação", 02));
-        regras.add(new RegraRodizio(02, "Professor Luis Ignacio de Anhaia Melo", "Avenida Salim Farah Maluf", 03));
-        regras.add(new RegraRodizio(02, "Avenida Paulista", "Rua Augusta", 04));
-        regras.add(new RegraRodizio(03, "Marginal do Rio Tiete", "Avenida dos Bandeirantes", 05));
-        regras.add(new RegraRodizio(03, "Avenida dos Estados", "Rua da Consolacao", 06));
-        regras.add(new RegraRodizio(04, "Avenida do Estado", "Rua Tamandare", 01));
-        regras.add(new RegraRodizio(05, "Avenida Nacoes Unidas", "Rua Heitor Penteado", 02));
-
+        regras.add(new RegraRodizio(01, "Avenida Bandeirantes", "Avenida 23 de Maio", Arrays.asList(1, 2, 3)));  // 1º do mês, placas terminando em 1, 2 ou 3
+        regras.add(new RegraRodizio(02, "Avenida Faria Lima", "Rua da Consolação", Arrays.asList(4, 5)));  // 2º do mês, placas terminando em 4 ou 5
+        regras.add(new RegraRodizio(03, "Professor Luis Ignacio de Anhaia Melo", "Avenida Salim Farah Maluf", Arrays.asList(6, 7)));  // 3º do mês, placas terminando em 6 ou 7
+        regras.add(new RegraRodizio(04, "Avenida Paulista", "Rua Augusta", Arrays.asList(8, 9)));  // 4º do mês, placas terminando em 8 ou 9
+        regras.add(new RegraRodizio(05, "Marginal do Rio Tiete", "Avenida dos Bandeirantes", Arrays.asList(0)));  // 5º do mês, placas terminando em 0
+        
         regras.add(new RegraCorredorOnibus(05, 17, "Avenida Brigadeiro Faria Lima"));
         regras.add(new RegraCorredorOnibus(06, 18, "Avenida Santo Amaro"));
         regras.add(new RegraCorredorOnibus(06, 20, "Avenida Vereador Jose Diniz"));
@@ -86,6 +84,7 @@ public class BaseDeDados {
                         ocorrencia.getData(), 
                         ocorrencia.getTipoVeiculo()
                     );
+                                    multa.setProcessada(true);  // A multa é processada
                     multas.add(multa);  // Adiciona a multa à lista
                 }
             }
