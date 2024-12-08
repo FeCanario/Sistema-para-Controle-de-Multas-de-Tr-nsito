@@ -1,6 +1,8 @@
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeParseException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -14,7 +16,7 @@ public class Main {
 
         // Mostrar um menu inicial
         System.out.println("Bem-vindo ao sistema de controle de multas de trânsito!");
-        
+
         // Loop de interação com o usuário
         while (true) {
             System.out.println("");
@@ -39,10 +41,10 @@ public class Main {
                     }
                 }
 
-                System.out.print("Digite o logradouro da ocorrência(sem caracteres especiais como 'ç' e 'ã'): ");
+                System.out.print("Digite o logradouro da ocorrência (sem caracteres especiais como 'ç' e 'ã'): ");
                 String logradouro = scanner.nextLine();
 
-                //Validar data da ocorrência
+                // Validar data da ocorrência
                 LocalDate data = null;
                 while (data == null) {
                     System.out.print("Digite a data da ocorrência (AAAA-MM-DD): ");
@@ -54,7 +56,7 @@ public class Main {
                     }
                 }
 
-                //Validar a hora da ocorrência
+                // Validar a hora da ocorrência
                 LocalTime hora = null;
                 while (hora == null) {
                     System.out.print("Digite a hora da ocorrência (HH:MM): ");
@@ -69,7 +71,7 @@ public class Main {
                 System.out.print("Digite o tipo de multa (ex: Velocidade, Rodizio, CorredorOnibus): ");
                 String tipo = scanner.nextLine();
 
-                //Validar tipo de veículo
+                // Validar tipo de veículo
                 int tipoVeiculo = 0;
                 while (tipoVeiculo < 1 || tipoVeiculo > 3) {
                     System.out.print("Digite o tipo de veículo (1 - Veículo leve; 2 - Veículo Pesado; 3 - Moto): ");
@@ -79,22 +81,10 @@ public class Main {
                     }
                 }
 
-                //Validar velocidade
-                int velocidade = 0;
-                if (tipo.equalsIgnoreCase("Velocidade")) {
-                    while (velocidade <= 0) {
-                        System.out.print("Digite a velocidade registrada (km/h): ");
-                        velocidade = scanner.nextInt();
-                        if (velocidade <= 0) {
-                            System.out.println("⚠️ Velocidade inválida! Deve ser um número positivo.");
-                        }
-                    }
-                }
-
                 // Criar a ocorrência e adicionar à base de dados
                 Ocorrencia ocorrencia;
                 if (tipo.equalsIgnoreCase("Velocidade")) {
-                    ocorrencia = new Ocorrencia(placa, logradouro, data, hora, velocidade, tipo, tipoVeiculo);
+                    ocorrencia = new Ocorrencia(placa, logradouro, data, hora, tipo, tipoVeiculo);
                 } else {
                     ocorrencia = new Ocorrencia(placa, logradouro, data, hora, tipo, tipoVeiculo);
                 }
@@ -152,8 +142,8 @@ public class Main {
                     System.out.println("Regra de velocidade registrada com sucesso!");
                 } else if (tipoRegra == 2) {
                     // Registrar nova regra de rodízio
-                    System.out.print("Digite o número do dia da semana (1 a 5): ");
-                    int dia = scanner.nextInt();
+                    System.out.print("Digite o dia do mês para a regra de rodízio (1 a 31): ");
+                    int diaDoMes = scanner.nextInt();
                     scanner.nextLine(); // Limpar o buffer
 
                     System.out.print("Digite o logradouro inicial para a regra de rodízio: ");
@@ -162,10 +152,15 @@ public class Main {
                     System.out.print("Digite o logradouro final para a regra de rodízio: ");
                     String logradouroFinal = scanner.nextLine();
 
-                    System.out.print("Digite o dígito final da placa para a regra: ");
-                    int digFinal = scanner.nextInt();
+                    System.out.print("Digite os dígitos finais das placas permitidas (ex: 1, 2, 3): ");
+                    String digitosStr = scanner.nextLine();
+                    String[] digitosArray = digitosStr.split(",");
+                    List<Integer> digitosPermitidos = new ArrayList<>();
+                    for (String digito : digitosArray) {
+                        digitosPermitidos.add(Integer.parseInt(digito.trim()));
+                    }
 
-                    baseDeDados.regras.add(new RegraRodizio(dia, logradouroInicial, logradouroFinal, digFinal));
+                    baseDeDados.regras.add(new RegraRodizio(diaDoMes, logradouroInicial, logradouroFinal, digitosPermitidos));
                     System.out.println("Regra de rodízio registrada com sucesso!");
                 } else if (tipoRegra == 3) {
                     // Registrar nova regra de corredor de ônibus
